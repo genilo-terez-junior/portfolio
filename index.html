@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genilo D. Terez Jr. — IT Professional & Payroll Officer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c10;
+    --bg2: #111520;
+    --bg3: #181d2a;
+    --surface: #1e2535;
+    --surface2: #252d40;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --text2: #9aa0b8;
+    --text3: #5c6480;
+    --accent: #4f8ef7;
+    --accent2: #38c6a0;
+    --accent3: #f5a623;
+    --accent-glow: rgba(79,142,247,0.18);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,142,247,0.1) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(79,142,247,0.3);
+    border-radius: 2rem;
+    background: rgba(79,142,247,0.06);
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-name span {
+    display: block;
+    background: linear-gradient(135deg, #4f8ef7 0%, #38c6a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.75rem 0;
+  }
+
+  .role-chip {
+    padding: 0.45rem 1.1rem;
+    border-radius: 3px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
+  }
+
+  .role-chip.primary {
+    background: rgba(79,142,247,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(79,142,247,0.25);
+  }
+
+  .role-chip.secondary {
+    background: rgba(56,198,160,0.1);
+    color: var(--accent2);
+    border: 1px solid rgba(56,198,160,0.2);
+  }
+
+  .role-chip.tertiary {
+    background: rgba(245,166,35,0.1);
+    color: var(--accent3);
+    border: 1px solid rgba(245,166,35,0.2);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text2);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #6fa3fa;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text2);
+    border: 1px solid var(--border2);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    width: fit-content;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 6rem 3rem;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text2);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .info-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+    background: var(--surface);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .info-row:hover { border-color: var(--border2); }
+
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .info-icon.blue { background: rgba(79,142,247,0.12); }
+  .info-icon.green { background: rgba(56,198,160,0.12); }
+  .info-icon.amber { background: rgba(245,166,35,0.12); }
+
+  .info-label {
+    font-size: 0.72rem;
+    color: var(--text3);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.15rem;
+  }
+
+  .info-value {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: var(--bg); }
+
+  .exp-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+
+  .exp-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(79,142,247,0.2);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.07em;
+    padding: 0.25rem 0.75rem;
+    background: rgba(79,142,247,0.08);
+    border-radius: 3px;
+    border: 1px solid rgba(79,142,247,0.2);
+    white-space: nowrap;
+  }
+
+  .exp-company {
+    font-size: 0.88rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-location {
+    font-size: 0.8rem;
+    color: var(--text3);
+    margin-bottom: 1rem;
+  }
+
+  .exp-desc {
+    color: var(--text2);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--text2);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.15rem;
+  }
+
+  .highlight-number {
+    color: var(--accent3);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .skill-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.85rem;
+    display: block;
+  }
+
+  .skill-card-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .skill-tag.blue {
+    background: rgba(79,142,247,0.1);
+    color: #7aabfa;
+    border: 1px solid rgba(79,142,247,0.18);
+  }
+
+  .skill-tag.green {
+    background: rgba(56,198,160,0.1);
+    color: #52d4b4;
+    border: 1px solid rgba(56,198,160,0.18);
+  }
+
+  .skill-tag.amber {
+    background: rgba(245,166,35,0.1);
+    color: #f7bc5f;
+    border: 1px solid rgba(245,166,35,0.18);
+  }
+
+  .skill-tag.gray {
+    background: rgba(255,255,255,0.05);
+    color: var(--text2);
+    border: 1px solid var(--border);
+  }
+
+  /* ─── COMPETENCIES ─── */
+  #competencies { background: var(--bg); }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .comp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  .comp-item:hover {
+    border-color: rgba(79,142,247,0.3);
+    background: var(--surface2);
+  }
+
+  .comp-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .comp-dot.accent { background: var(--accent); }
+  .comp-dot.accent2 { background: var(--accent2); }
+  .comp-dot.accent3 { background: var(--accent3); }
+
+  .comp-text {
+    font-size: 0.875rem;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+
+  /* ─── EDUCATION ─── */
+  #education {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    max-width: 700px;
+    transition: border-color 0.2s;
+  }
+
+  .edu-card:hover { border-color: var(--border2); }
+
+  .edu-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .edu-degree {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-school {
+    font-size: 0.9rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .edu-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .edu-meta-label {
+    font-size: 0.68rem;
+    color: var(--text3);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .edu-meta-value {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--bg); }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-size: 1rem;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-items {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .contact-item:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-icon.phone { background: rgba(56,198,160,0.12); }
+  .contact-icon.email { background: rgba(79,142,247,0.12); }
+  .contact-icon.linkedin { background: rgba(79,142,247,0.12); }
+  .contact-icon.location { background: rgba(245,166,35,0.12); }
+
+  .contact-detail-label {
+    font-size: 0.7rem;
+    color: var(--text3);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-detail-value {
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+
+  .decl-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1.75rem 2rem;
+  }
+
+  .decl-title {
+    font-size: 0.75rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .decl-text {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 1.25rem;
+  }
+
+  .decl-sig {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: var(--bg2);
+  }
+
+  .footer-left {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-right {
+    font-size: 0.8rem;
+    color: var(--text3);
+  }
+
+  /* ─── SCROLL ANIMATION ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 0 1.5rem; }
+    .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { grid-template-columns: repeat(3, auto); gap: 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">GDT.jr</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+
+    <div class="hero-tag">Available for opportunities</div>
+
+    <h1 class="hero-name">
+      Genilo D.<br>
+      <span>Terez Jr.</span>
+    </h1>
+
+    <div class="hero-roles">
+      <span class="role-chip primary">⌨ IT Professional</span>
+      <span class="role-chip secondary">₱ Payroll Officer</span>
+      <span class="role-chip tertiary">&lt;/&gt; PHP Programmer</span>
+    </div>
+
+    <p class="hero-desc">
+      Results-driven IT professional with over five years of combined experience bridging
+      technical systems and administrative operations — from managing payroll for thousands
+      of employees to developing web-based applications that keep businesses running.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View Experience →</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">6<span>K</span></div>
+        <div class="stat-label">Employees Managed</div>
+      </div>
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Payroll Groups</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — About</div>
+  <h2 class="section-title">Bridging Tech &amp; <em>Administration</em></h2>
+
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>
+        I'm <strong>Genilo D. Terez Jr.</strong>, an IT professional based in
+        <strong>General Santos City, Philippines</strong>, with a dual role that spans
+        both systems development and large-scale payroll administration.
+      </p>
+      <p>
+        Since 2022, I've simultaneously served as <strong>Payroll Officer</strong> and
+        <strong>IT Systems Programmer</strong> at Centro Services Cooperative, where I process
+        monthly payroll for approximately <strong>6,000 employees</strong> while also developing
+        and maintaining the company's internal web-based platforms.
+      </p>
+      <p>
+        My background in finance administration and hands-on programming allows me to see both
+        sides of a problem — the business need and the technical solution. I'm known for
+        accuracy, reliability, and an ability to streamline workflows through automation and
+        good system design.
+      </p>
+    </div>
+
+    <div class="info-grid fade-in">
+      <div class="info-row">
+        <div class="info-icon blue">📍</div>
+        <div>
+          <div class="info-label">Location</div>
+          <div class="info-value">General Santos City, South Cotabato, Philippines</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon green">📱</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-value">+63 998 941 8007</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon amber">✉</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value">genilo.terez.junior@gmail.com</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon blue">🎓</div>
+        <div>
+          <div class="info-label">Education</div>
+          <div class="info-value">BS Information Technology — MSU GenSan, 2019</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon green">🔗</div>
+        <div>
+          <div class="info-label">LinkedIn</div>
+          <div class="info-value"><a href="https://linkedin.com/in/gelo-terez" target="_blank" style="color: var(--accent); text-decoration: none;">linkedin.com/in/gelo-terez</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">02 — Experience</div>
+  <h2 class="section-title">Professional <em>History</em></h2>
+
+  <div class="exp-timeline">
+
+    <!-- Job 1: Payroll Officer -->
+    <div class="exp-item fade-in">
+      <div class="exp-header">
+        <div class="exp-title">Payroll Officer</div>
+        <div class="exp-period">2022 — Present</div>
+      </div>
+      <div class="exp-company">Centro Services Cooperative</div>
+      <div class="exp-location">📍 General Santos City, Philippines</div>
+      <p class="exp-desc">
+        Handles end-to-end payroll operations for a large cooperative with multiple employee groups,
+        ensuring accurate and timely salary distribution at scale.
+      </p>
+      <ul class="exp-bullets">
+        <li>Processes monthly payroll for approximately <span class="highlight-number">~6,000 employees</span> across <span class="highlight-number">5 distinct payroll groups</span>, ensuring accurate and timely salary distribution.</li>
+        <li>Reviews attendance records and daily work hours to compute gross pay and all applicable statutory deductions.</li>
+        <li>Prepares and maintains complete payroll records in compliance with company policies and government labor regulations.</li>
+        <li>Generates pay slips and distributes them to employees every payroll cycle.</li>
+        <li>Coordinates with HR and Finance departments to resolve payroll discrepancies and implement process improvements.</li>
+        <li>Identifies opportunities to streamline payroll workflows for greater efficiency and accuracy.</li>
+      </ul>
+    </div>
+
+    <!-- Job 2: IT Systems Programmer -->
+    <div class="exp-item fade-in">
+      <div class="exp-header">
+        <div class="exp-title">IT Systems Programmer</div>
+        <div class="exp-period">2022 — Present</div>
+      </div>
+      <div class="exp-company">Centro Services Cooperative</div>
+      <div class="exp-location">📍 General Santos City, Philippines</div>
+      <p class="exp-desc">
+        Responsible for the development, maintenance, and technical support of the company's
+        internal web-based systems used across daily business operations.
+      </p>
+      <ul class="exp-bullets">
+        <li>Develops and maintains web-based applications using <span class="highlight-number">PHP</span> to support data processing, reporting, and daily business operations.</li>
+        <li>Performs regular system updates, database management, and program enhancements to ensure reliable system performance.</li>
+        <li>Troubleshoots and resolves technical issues to minimize system downtime and maintain operational productivity.</li>
+        <li>Provides technical assistance and IT support to end users across the organization.</li>
+      </ul>
+    </div>
+
+    <!-- Job 3: Finance Admin -->
+    <div class="exp-item fade-in">
+      <div class="exp-header">
+        <div class="exp-title">Finance Administrative Assistant</div>
+        <div class="exp-period">2020 — 2022</div>
+      </div>
+      <div class="exp-company">Passionist Philanthropic Development Office</div>
+      <div class="exp-location">📍 Philippines</div>
+      <p class="exp-desc">
+        Managed financial records and fund monitoring operations for a non-profit development office,
+        supporting internal audits and organizational accountability.
+      </p>
+      <ul class="exp-bullets">
+        <li>Monitored and managed centralized organizational funds by accurately recording all incoming and outgoing financial transactions.</li>
+        <li>Documented donations and financial assistance received from benefactors and prepared periodic financial reports.</li>
+        <li>Maintained organized and up-to-date financial records to support fund monitoring, internal audits, and accountability.</li>
+      </ul>
+    </div>
+
+    <!-- Job 4: OJT -->
+    <div class="exp-item fade-in">
+      <div class="exp-header">
+        <div class="exp-title">Programmer — On-the-Job Training</div>
+        <div class="exp-period">2019</div>
+      </div>
+      <div class="exp-company">Mindanao State University — Computer Center</div>
+      <div class="exp-location">📍 General Santos City, Philippines</div>
+      <p class="exp-desc">
+        Completed a programming internship focused on system module development and database preparation,
+        laying the foundation for a career in software and systems development.
+      </p>
+      <ul class="exp-bullets">
+        <li>Designed and developed system modules with a user-friendly frontend interface.</li>
+        <li>Verified button functionality and overall system usability across different user workflows.</li>
+        <li>Assisted in populating and managing the database with test data in preparation for production deployment.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">03 — Skills</div>
+  <h2 class="section-title">Technical <em>Arsenal</em></h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card fade-in">
+      <span class="skill-card-icon">⌨</span>
+      <div class="skill-card-title">Programming Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag blue">PHP</span>
+        <span class="skill-tag blue">JavaScript</span>
+        <span class="skill-tag blue">SQL</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-card-icon">🗄</span>
+      <div class="skill-card-title">Database</div>
+      <div class="skill-tags">
+        <span class="skill-tag green">MySQL</span>
+        <span class="skill-tag gray">Data Entry</span>
+        <span class="skill-tag gray">Queries</span>
+        <span class="skill-tag gray">Record Management</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-card-icon">📊</span>
+      <div class="skill-card-title">Tools &amp; Software</div>
+      <div class="skill-tags">
+        <span class="skill-tag amber">MS Excel</span>
+        <span class="skill-tag amber">Payroll Systems</span>
+        <span class="skill-tag gray">Web-Based Apps</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-card-icon">⚙</span>
+      <div class="skill-card-title">Systems &amp; Development</div>
+      <div class="skill-tags">
+        <span class="skill-tag blue">System Updates</span>
+        <span class="skill-tag gray">Program Enhancements</span>
+        <span class="skill-tag gray">Frontend Dev</span>
+        <span class="skill-tag gray">Troubleshooting</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-card-icon">💼</span>
+      <div class="skill-card-title">Administrative</div>
+      <div class="skill-tags">
+        <span class="skill-tag green">Payroll Processing</span>
+        <span class="skill-tag gray">Financial Records</span>
+        <span class="skill-tag gray">Report Generation</span>
+        <span class="skill-tag gray">Audit Support</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <span class="skill-card-icon">🤝</span>
+      <div class="skill-card-title">Collaboration</div>
+      <div class="skill-tags">
+        <span class="skill-tag amber">HR Coordination</span>
+        <span class="skill-tag amber">Finance Teams</span>
+        <span class="skill-tag gray">End-User Support</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <div class="section-label">04 — Core Competencies</div>
+  <h2 class="section-title">What I <em>Bring</em></h2>
+
+  <div class="comp-grid">
+    <div class="comp-item fade-in"><div class="comp-dot accent"></div><div class="comp-text">Payroll Processing and Administration</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent2"></div><div class="comp-text">Web-Based Application Development and Maintenance</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent3"></div><div class="comp-text">IT System Maintenance and Technical Support</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent"></div><div class="comp-text">Database Management (MySQL)</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent2"></div><div class="comp-text">Data Processing, Reporting, and Automation</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent3"></div><div class="comp-text">Financial Record Keeping and Fund Monitoring</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent"></div><div class="comp-text">MS Excel — Intermediate (formulas, data organization, report generation)</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent2"></div><div class="comp-text">System Troubleshooting and Problem Resolution</div></div>
+    <div class="comp-item fade-in"><div class="comp-dot accent3"></div><div class="comp-text">Cross-functional Collaboration with HR and Finance Teams</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">05 — Education</div>
+  <h2 class="section-title">Academic <em>Foundation</em></h2>
+
+  <div class="edu-card fade-in">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-degree">Bachelor of Science in Information Technology</div>
+      <div class="edu-school">Mindanao State University — General Santos City</div>
+      <div style="font-size: 0.8rem; color: var(--text3);">General Santos City, South Cotabato, Philippines</div>
+      <div class="edu-meta">
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Years Attended</div>
+          <div class="edu-meta-value">2014 – 2019</div>
+        </div>
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Year Graduated</div>
+          <div class="edu-meta-value">2019</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">06 — Contact</div>
+  <h2 class="section-title">Let's <em>Connect</em></h2>
+
+  <div class="contact-wrapper">
+    <div class="fade-in">
+      <p class="contact-intro">
+        I'm open to new opportunities where I can apply my dual expertise in IT systems and payroll operations.
+        Whether you're looking for a programmer, a payroll specialist, or someone who can do both — feel free to reach out.
+      </p>
+
+      <div class="contact-items">
+        <a href="tel:+639989418007" class="contact-item">
+          <div class="contact-icon phone">📱</div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-value">+63 998 941 8007</div>
+          </div>
+        </a>
+        <a href="mailto:genilo.terez.junior@gmail.com" class="contact-item">
+          <div class="contact-icon email">✉</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">genilo.terez.junior@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/gelo-terez" target="_blank" class="contact-item">
+          <div class="contact-icon linkedin">🔗</div>
+          <div>
+            <div class="contact-detail-label">LinkedIn</div>
+            <div class="contact-detail-value">linkedin.com/in/gelo-terez</div>
+          </div>
+        </a>
+        <div class="contact-item" style="cursor: default;">
+          <div class="contact-icon location">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Lot 11, Block 6, Sarangani Country Homes, Tambler, General Santos City, South Cotabato 9500</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div class="decl-card">
+        <div class="decl-title">Declaration</div>
+        <p class="decl-text">
+          "I hereby certify that all information provided in this curriculum vitae is true and correct to the best of my knowledge and belief."
+        </p>
+        <div class="decl-sig">Genilo D. Terez Jr.</div>
+        <div style="font-size: 0.78rem; color: var(--text3); margin-top: 0.35rem; font-family: var(--font-mono);">General Santos City, Philippines</div>
+      </div>
+
+      <div style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;">
+        <div style="font-size: 0.72rem; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem;">Character References</div>
+        <div style="display: grid; gap: 0.75rem;">
+          <div>
+            <div style="font-size: 0.88rem; color: var(--text); font-weight: 500;">Shiena Marie P. Tandog</div>
+            <div style="font-size: 0.78rem; color: var(--text3);">Barangay Tambler, General Santos City</div>
+            <div style="font-size: 0.78rem; color: var(--accent);">centro.smtandog@gmail.com</div>
+          </div>
+          <div style="border-top: 1px solid var(--border); padding-top: 0.75rem;">
+            <div style="font-size: 0.88rem; color: var(--text); font-weight: 500;">Janet G. Suilo</div>
+            <div style="font-size: 0.78rem; color: var(--text3);">Barangay Tambler, General Santos City</div>
+            <div style="font-size: 0.78rem; color: var(--accent);">suilojanet0614@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 Genilo D. Terez Jr. — All rights reserved.</div>
+  <div class="footer-right">IT Professional · Payroll Officer · PHP Programmer</div>
+</footer>
+
+<script>
+  // Scroll fade-in animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 120) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'var(--text)'
+        : '';
+    });
+  });
+</script>
+</body>
+</html>
